@@ -37,10 +37,11 @@ javadoc {
 
 boolean deleteDir(File dir){
     if (dir.isDirectory()) {
-        String[] children = dir.list();
+        String[] children = dir.list()
         for (i in 0..<children.length) {
-            boolean success = deleteDir(new File(dir as String, children[i]));
+            boolean success = deleteDir(new File(dir as String, children[i]))
+            if(!success) return false
         }
     }
-    return dir.delete();
+    return dir.delete()
 }
