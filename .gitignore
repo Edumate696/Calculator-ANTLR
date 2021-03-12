@@ -6,7 +6,6 @@
 # Keep ANTLR Generated Scripts
 build/*
 !build/generated-src
-!build/docs
 
 # Ignore Gradle GUI config
 gradle-app.setting

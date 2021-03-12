@@ -7,6 +7,7 @@ group 'org.edumate'
 version '1.0-SNAPSHOT'
 
 classes.dependsOn clean
+build.dependsOn javadoc
 
 generateGrammarSource {
 //    maxHeapSize = "64m"
@@ -25,4 +26,21 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+javadoc {
+    doFirst {
+        deleteDir file("docs")
+    }
+    destinationDir file("docs")
+}
+
+boolean deleteDir(File dir){
+    if (dir.isDirectory()) {
+        String[] children = dir.list();
+        for (i in 0..<children.length) {
+            boolean success = deleteDir(new File(dir as String, children[i]));
+        }
+    }
+    return dir.delete();
 }
