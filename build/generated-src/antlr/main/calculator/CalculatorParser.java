@@ -1,4 +1,4 @@
-// Generated from calculator\Calculator.g4 by ANTLR 4.5
+// Generated from calculator\Calculator.g4 by ANTLR 4.9.2
 package calculator;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class CalculatorParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.5", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.9.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -26,22 +26,31 @@ public class CalculatorParser extends Parser {
 		RULE_powExpression = 3, RULE_signedAtom = 4, RULE_atom = 5, RULE_scientific = 6, 
 		RULE_constant = 7, RULE_variable = 8, RULE_func = 9, RULE_funcname = 10, 
 		RULE_relop = 11;
-	public static final String[] ruleNames = {
-		"equation", "expression", "multiplyingExpression", "powExpression", "signedAtom", 
-		"atom", "scientific", "constant", "variable", "func", "funcname", "relop"
-	};
+	private static String[] makeRuleNames() {
+		return new String[] {
+			"equation", "expression", "multiplyingExpression", "powExpression", "signedAtom", 
+			"atom", "scientific", "constant", "variable", "func", "funcname", "relop"
+		};
+	}
+	public static final String[] ruleNames = makeRuleNames();
 
-	private static final String[] _LITERAL_NAMES = {
-		null, "'cos'", "'sin'", "'tan'", "'acos'", "'asin'", "'atan'", "'ln'", 
-		"'log'", "'sqrt'", "'('", "')'", "'+'", "'-'", "'*'", "'/'", "'>'", "'<'", 
-		"'='", "','", "'.'", "'^'", "'pi'", null, "'i'"
-	};
-	private static final String[] _SYMBOLIC_NAMES = {
-		null, "COS", "SIN", "TAN", "ACOS", "ASIN", "ATAN", "LN", "LOG", "SQRT", 
-		"LPAREN", "RPAREN", "PLUS", "MINUS", "TIMES", "DIV", "GT", "LT", "EQ", 
-		"COMMA", "POINT", "POW", "PI", "EULER", "I", "VARIABLE", "SCIENTIFIC_NUMBER", 
-		"WS"
-	};
+	private static String[] makeLiteralNames() {
+		return new String[] {
+			null, "'cos'", "'sin'", "'tan'", "'acos'", "'asin'", "'atan'", "'ln'", 
+			"'log'", "'sqrt'", "'('", "')'", "'+'", "'-'", "'*'", "'/'", "'>'", "'<'", 
+			"'='", "','", "'.'", "'^'", "'pi'", null, "'i'"
+		};
+	}
+	private static final String[] _LITERAL_NAMES = makeLiteralNames();
+	private static String[] makeSymbolicNames() {
+		return new String[] {
+			null, "COS", "SIN", "TAN", "ACOS", "ASIN", "ATAN", "LN", "LOG", "SQRT", 
+			"LPAREN", "RPAREN", "PLUS", "MINUS", "TIMES", "DIV", "GT", "LT", "EQ", 
+			"COMMA", "POINT", "POW", "PI", "EULER", "I", "VARIABLE", "SCIENTIFIC_NUMBER", 
+			"WS"
+		};
+	}
+	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
 	/**
@@ -91,6 +100,7 @@ public class CalculatorParser extends Parser {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
+
 	public static class EquationContext extends ParserRuleContext {
 		public List<ExpressionContext> expression() {
 			return getRuleContexts(ExpressionContext.class);
@@ -182,7 +192,10 @@ public class CalculatorParser extends Parser {
 				_la = _input.LA(1);
 				if ( !(_la==PLUS || _la==MINUS) ) {
 				_errHandler.recoverInline(this);
-				} else {
+				}
+				else {
+					if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+					_errHandler.reportMatch(this);
 					consume();
 				}
 				setState(30);
@@ -251,7 +264,10 @@ public class CalculatorParser extends Parser {
 				_la = _input.LA(1);
 				if ( !(_la==TIMES || _la==DIV) ) {
 				_errHandler.recoverInline(this);
-				} else {
+				}
+				else {
+					if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+					_errHandler.reportMatch(this);
 					consume();
 				}
 				setState(38);
@@ -363,6 +379,7 @@ public class CalculatorParser extends Parser {
 		enterRule(_localctx, 8, RULE_signedAtom);
 		try {
 			setState(58);
+			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case PLUS:
 				enterOuterAlt(_localctx, 1);
@@ -455,6 +472,7 @@ public class CalculatorParser extends Parser {
 		enterRule(_localctx, 10, RULE_atom);
 		try {
 			setState(67);
+			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case SCIENTIFIC_NUMBER:
 				enterOuterAlt(_localctx, 1);
@@ -565,7 +583,10 @@ public class CalculatorParser extends Parser {
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PI) | (1L << EULER) | (1L << I))) != 0)) ) {
 			_errHandler.recoverInline(this);
-			} else {
+			}
+			else {
+				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+				_errHandler.reportMatch(this);
 				consume();
 			}
 			}
@@ -718,7 +739,10 @@ public class CalculatorParser extends Parser {
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << COS) | (1L << SIN) | (1L << TAN) | (1L << ACOS) | (1L << ASIN) | (1L << ATAN) | (1L << LN) | (1L << LOG) | (1L << SQRT))) != 0)) ) {
 			_errHandler.recoverInline(this);
-			} else {
+			}
+			else {
+				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+				_errHandler.reportMatch(this);
 				consume();
 			}
 			}
@@ -760,7 +784,10 @@ public class CalculatorParser extends Parser {
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << GT) | (1L << LT) | (1L << EQ))) != 0)) ) {
 			_errHandler.recoverInline(this);
-			} else {
+			}
+			else {
+				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+				_errHandler.reportMatch(this);
 				consume();
 			}
 			}
@@ -777,16 +804,16 @@ public class CalculatorParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\35^\4\2\t\2\4\3\t"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\35^\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4"+
 		"\f\t\f\4\r\t\r\3\2\3\2\3\2\3\2\3\3\3\3\3\3\7\3\"\n\3\f\3\16\3%\13\3\3"+
 		"\4\3\4\3\4\7\4*\n\4\f\4\16\4-\13\4\3\5\3\5\3\5\7\5\62\n\5\f\5\16\5\65"+
 		"\13\5\3\6\3\6\3\6\3\6\3\6\3\6\5\6=\n\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7"+
 		"F\n\7\3\b\3\b\3\t\3\t\3\n\3\n\3\13\3\13\3\13\3\13\3\13\7\13S\n\13\f\13"+
 		"\16\13V\13\13\3\13\3\13\3\f\3\f\3\r\3\r\3\r\2\2\16\2\4\6\b\n\f\16\20\22"+
-		"\24\26\30\2\7\3\2\16\17\3\2\20\21\3\2\30\32\3\2\3\13\3\2\22\24[\2\32\3"+
-		"\2\2\2\4\36\3\2\2\2\6&\3\2\2\2\b.\3\2\2\2\n<\3\2\2\2\fE\3\2\2\2\16G\3"+
-		"\2\2\2\20I\3\2\2\2\22K\3\2\2\2\24M\3\2\2\2\26Y\3\2\2\2\30[\3\2\2\2\32"+
+		"\24\26\30\2\7\3\2\16\17\3\2\20\21\3\2\30\32\3\2\3\13\3\2\22\24\2[\2\32"+
+		"\3\2\2\2\4\36\3\2\2\2\6&\3\2\2\2\b.\3\2\2\2\n<\3\2\2\2\fE\3\2\2\2\16G"+
+		"\3\2\2\2\20I\3\2\2\2\22K\3\2\2\2\24M\3\2\2\2\26Y\3\2\2\2\30[\3\2\2\2\32"+
 		"\33\5\4\3\2\33\34\5\30\r\2\34\35\5\4\3\2\35\3\3\2\2\2\36#\5\6\4\2\37 "+
 		"\t\2\2\2 \"\5\6\4\2!\37\3\2\2\2\"%\3\2\2\2#!\3\2\2\2#$\3\2\2\2$\5\3\2"+
 		"\2\2%#\3\2\2\2&+\5\b\5\2\'(\t\3\2\2(*\5\b\5\2)\'\3\2\2\2*-\3\2\2\2+)\3"+

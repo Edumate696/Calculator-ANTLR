@@ -1,6 +1,5 @@
-// Generated from calculator\Calculator.g4 by ANTLR 4.5
+// Generated from calculator\Calculator.g4 by ANTLR 4.9.2
 package calculator;
-import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
